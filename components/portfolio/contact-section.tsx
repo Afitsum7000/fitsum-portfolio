@@ -35,11 +35,25 @@ export function ContactSection() {
     setIsSubmitting(true)
     setError(null)
 
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+      ...(formData.company.trim()
+        ? { company: formData.company.trim() }
+        : {}),
+    }
+
     try {
       const supabase = createClient()
-      const { error: insertError } = await supabase
+
+      console.log('sending contact form', payload)
+
+      const { data, error: insertError } = await supabase
         .from('contact_messages')
-        .insert([formData])
+        .insert([payload])
+
+      console.log('contact form response', { data, error: insertError })
 
       if (insertError) throw insertError
 
