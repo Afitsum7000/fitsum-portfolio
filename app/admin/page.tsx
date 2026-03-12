@@ -20,6 +20,13 @@ export default async function AdminDashboardPage() {
         .eq('featured', true),
     ])
 
+  console.log('AdminDashboardPage stats', {
+    projectsError: projectsResult.error,
+    messagesError: messagesResult.error,
+    unreadError: unreadResult.error,
+    featuredError: featuredResult.error,
+  })
+
   const stats = [
     {
       title: 'Total Projects',

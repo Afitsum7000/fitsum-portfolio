@@ -5,10 +5,12 @@ import { ProjectFormDialog } from '@/components/admin/project-form-dialog'
 export default async function AdminProjectsPage() {
   const supabase = await createClient()
 
-  const { data: projects } = await supabase
+  const { data: projects, error } = await supabase
     .from('projects')
     .select('*')
     .order('created_at', { ascending: false })
+
+  console.log('AdminProjectsPage projects fetch', { count: projects?.length, error })
 
   return (
     <div>

@@ -10,11 +10,13 @@ import { Navbar } from '@/components/portfolio/navbar'
 export default async function HomePage() {
   const supabase = await createClient()
   
-  const { data: projects } = await supabase
+  const { data: projects, error } = await supabase
     .from('projects')
     .select('*')
     .order('featured', { ascending: false })
     .order('created_at', { ascending: false })
+
+  console.log('HomePage projects fetch', { count: projects?.length, error })
 
   return (
     <div className="min-h-screen bg-background">
