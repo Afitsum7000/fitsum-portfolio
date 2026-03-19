@@ -20,49 +20,41 @@ const skills = [
     category: 'Languages',
     icon: Code,
     items: ['Node.js', 'TypeScript', 'JavaScript', 'PHP', 'Python'],
-    gradient: 'from-blue-500/20 to-cyan-500/20',
   },
   {
     category: 'Backend Frameworks',
     icon: Server,
     items: ['NestJS', 'Express.js', 'Fastify', 'Laravel', 'FastAPI'],
-    gradient: 'from-green-500/20 to-emerald-500/20',
   },
   {
     category: 'Databases',
     icon: Database,
     items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
-    gradient: 'from-orange-500/20 to-amber-500/20',
   },
   {
     category: 'Architecture',
     icon: Container,
     items: ['Microservices', 'REST APIs', 'GraphQL', 'Event-driven'],
-    gradient: 'from-purple-500/20 to-pink-500/20',
   },
   {
     category: 'DevOps',
     icon: Cloud,
     items: ['Docker', 'Kubernetes', 'CI/CD', 'AWS', 'DigitalOcean'],
-    gradient: 'from-sky-500/20 to-blue-500/20',
   },
   {
     category: 'Version Control',
     icon: GitBranch,
     items: ['Git', 'GitHub', 'GitLab'],
-    gradient: 'from-rose-500/20 to-red-500/20',
   },
   {
     category: 'Security',
     icon: Shield,
     items: ['JWT', 'OAuth2', 'RBAC', 'API Security'],
-    gradient: 'from-teal-500/20 to-cyan-500/20',
   },
   {
     category: 'Performance',
     icon: Zap,
     items: ['Optimization', 'Caching', 'Load Balancing', 'Monitoring'],
-    gradient: 'from-yellow-500/20 to-orange-500/20',
   },
 ]
 
@@ -94,9 +86,8 @@ export function SkillsSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="skills" className="py-24 bg-muted/30 relative overflow-hidden">
-      {/* Decorative gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+    <section id="skills" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-primary/5 pointer-events-none opacity-20" />
       
       <div className="container mx-auto px-6 relative">
         <motion.div
@@ -124,13 +115,12 @@ export function SkillsSection() {
         >
           {skills.map((skill) => (
             <motion.div key={skill.category} variants={cardVariants}>
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50 overflow-hidden group hover:border-primary/30 transition-all duration-500 h-full">
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <Card className="bg-card border-border overflow-hidden group hover:border-primary/40 transition-all duration-300 h-full shadow-sm shadow-black/20">
                 <CardContent className="pt-6 relative">
                   <div className="flex items-center gap-3 mb-4">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="p-2.5 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300"
+                      className="p-2.5 rounded-lg bg-secondary group-hover:bg-primary/20 transition-colors duration-300"
                     >
                       <skill.icon className="h-5 w-5 text-primary" />
                     </motion.div>
@@ -145,7 +135,7 @@ export function SkillsSection() {
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.05 }}
                         whileHover={{ scale: 1.05 }}
-                        className="text-xs px-2.5 py-1.5 rounded-full bg-secondary/80 text-secondary-foreground hover:bg-primary/20 hover:text-primary transition-colors duration-300 cursor-default"
+                        className="text-xs px-2.5 py-1.5 rounded-full bg-secondary text-secondary-foreground hover:bg-primary/20 hover:text-primary transition-colors duration-300 cursor-default"
                       >
                         {item}
                       </motion.span>

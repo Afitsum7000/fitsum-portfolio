@@ -26,9 +26,8 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border/50 bg-muted/30 relative overflow-hidden">
-      {/* Subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
+    <footer className="border-t border-border bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-primary/5 pointer-events-none opacity-20" />
       
       <div className="container mx-auto px-6 py-12 relative">
         <motion.div
@@ -57,7 +56,7 @@ export function Footer() {
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="p-2.5 rounded-full bg-secondary/50 text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all duration-300"
+                className="p-2.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-primary hover:bg-secondary transition-all duration-300"
                 aria-label={link.label}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
@@ -78,7 +77,7 @@ export function Footer() {
               viewport={{ once: true }}
               className="flex items-center gap-1.5"
             >
-              Built with <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500" /> {currentYear}
+              Built with <Heart className="h-3.5 w-3.5 text-accent fill-accent" /> {currentYear}
             </motion.span>
             <span className="hidden md:inline text-border">|</span>
             <motion.div

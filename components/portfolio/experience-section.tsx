@@ -89,7 +89,7 @@ export function ExperienceSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
+    <section id="experience" className="py-24 relative overflow-hidden bg-background">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -119,7 +119,7 @@ export function ExperienceSection() {
               initial={{ scaleY: 0 }}
               animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
               transition={{ duration: 1, ease: 'easeOut' }}
-              className="absolute left-0 md:left-4 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/50 to-transparent origin-top"
+              className="absolute left-0 md:left-4 top-0 bottom-0 w-px bg-primary/40 origin-top"
             />
 
             <div className="flex flex-col gap-12">
@@ -134,13 +134,13 @@ export function ExperienceSection() {
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : { scale: 0 }}
                     transition={{ delay: index * 0.2 + 0.3, type: 'spring', stiffness: 200 }}
-                    className="absolute left-0 md:left-4 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/30"
+                    className="absolute left-0 md:left-4 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-md shadow-primary/20"
                   />
 
                   <motion.div
-                    whileHover={{ scale: 1.02, x: 10 }}
+                    whileHover={{ scale: 1.01, x: 6 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500"
+                    className="bg-card border border-border rounded-lg p-6 hover:border-primary/40 hover:shadow-md hover:shadow-black/20 transition-all duration-300"
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>

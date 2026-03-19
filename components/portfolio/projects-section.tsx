@@ -1,8 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -46,16 +44,12 @@ const cardVariants = {
 }
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-  
   const featuredProjects = projects.filter((p) => p.featured)
   const otherProjects = projects.filter((p) => !p.featured)
 
   return (
-    <section id="projects" className="py-24 bg-muted/30 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-primary/5 to-transparent pointer-events-none" />
+    <section id="projects" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-primary/5 pointer-events-none opacity-20" />
       
       <div className="container mx-auto px-6 relative">
         <motion.div
@@ -76,30 +70,29 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
         {/* Featured Projects */}
         <motion.div
-          ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
         >
           {featuredProjects.map((project) => (
             <motion.div key={project.id} variants={cardVariants}>
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50 overflow-hidden group hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 h-full">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="bg-card border-border overflow-hidden group hover:border-primary/40 hover:shadow-md hover:shadow-black/20 transition-all duration-300 h-full">
                 <CardHeader className="pb-4 relative">
                   <div className="flex items-start justify-between">
                     <motion.div
                       whileHover={{ scale: 1.02 }}
                       className="flex items-center gap-3"
                     >
-                      <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                      <div className="p-2 rounded-lg bg-secondary group-hover:bg-primary/20 transition-colors duration-300">
                         <Folder className="h-5 w-5 text-primary" />
                       </div>
                       <CardTitle className="text-xl text-foreground">
                         {project.title}
                       </CardTitle>
                     </motion.div>
-                    <Badge variant="secondary" className="flex items-center gap-1 bg-primary/10 text-primary border-0">
+                    <Badge variant="secondary" className="flex items-center gap-1 bg-secondary text-primary border border-border">
                       <Star className="h-3 w-3 fill-current" />
                       Featured
                     </Badge>
@@ -120,7 +113,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                       >
                         <Badge 
                           variant="outline" 
-                          className="text-xs hover:bg-primary/10 hover:border-primary/30 transition-colors duration-300"
+                          className="text-xs bg-secondary border-border text-secondary-foreground hover:border-primary/40 transition-colors duration-300"
                         >
                           {tech}
                         </Badge>
@@ -133,7 +126,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                         variant="outline" 
                         size="sm" 
                         asChild
-                        className="group/btn hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
+                        className="group/btn border-border bg-card hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
                       >
                         <a
                           href={project.live_url}
@@ -172,12 +165,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             >
               {otherProjects.map((project) => (
                 <motion.div key={project.id} variants={cardVariants}>
-                  <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 h-full group">
+                  <Card className="bg-card border-border hover:border-primary/40 hover:shadow-md hover:shadow-black/20 transition-all duration-300 h-full group">
                     <CardHeader className="pb-2">
                       <div className="flex items-center gap-3">
                         <motion.div
                           whileHover={{ rotate: 10 }}
-                          className="p-2 rounded-lg bg-secondary/50 group-hover:bg-primary/10 transition-colors duration-300"
+                          className="p-2 rounded-lg bg-secondary group-hover:bg-primary/20 transition-colors duration-300"
                         >
                           <Folder className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
                         </motion.div>

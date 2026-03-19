@@ -67,9 +67,8 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Decorative gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-transparent to-transparent pointer-events-none" />
+    <section id="contact" className="py-24 relative overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-primary/5 pointer-events-none opacity-20" />
       
       <div className="container mx-auto px-6 relative">
         <motion.div
@@ -85,7 +84,7 @@ export function ContactSection() {
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-              className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 mb-6"
+              className="inline-flex items-center justify-center p-3 rounded-full bg-secondary border border-border mb-6"
             >
               <Sparkles className="h-6 w-6 text-primary" />
             </motion.div>
@@ -110,7 +109,7 @@ export function ContactSection() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + i * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className="text-sm px-4 py-2 rounded-full bg-secondary/50 text-secondary-foreground hover:bg-primary/10 hover:text-primary transition-colors duration-300 cursor-default"
+                  className="text-sm px-4 py-2 rounded-full bg-secondary text-secondary-foreground hover:bg-primary/20 hover:text-primary transition-colors duration-300 cursor-default"
                 >
                   {service}
                 </motion.span>
@@ -124,8 +123,7 @@ export function ContactSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
+            <Card className="bg-card border-border overflow-hidden shadow-sm shadow-black/20">
               <CardContent className="pt-8 relative">
                 <AnimatePresence mode="wait">
                   {isSubmitted ? (
@@ -201,7 +199,7 @@ export function ContactSection() {
                             onChange={(e) =>
                               setFormData({ ...formData, name: e.target.value })
                             }
-                            className="transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                            className="transition-all duration-300 focus:ring-2 focus:ring-primary/30 focus:border-primary"
                           />
                         </div>
                         <div className="flex flex-col gap-2">
@@ -222,7 +220,7 @@ export function ContactSection() {
                             onChange={(e) =>
                               setFormData({ ...formData, email: e.target.value })
                             }
-                            className="transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                            className="transition-all duration-300 focus:ring-2 focus:ring-primary/30 focus:border-primary"
                           />
                         </div>
                       </div>
@@ -242,7 +240,7 @@ export function ContactSection() {
                           onChange={(e) =>
                             setFormData({ ...formData, company: e.target.value })
                           }
-                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/30 focus:border-primary"
                         />
                       </div>
                       <div className="flex flex-col gap-2">
@@ -263,7 +261,7 @@ export function ContactSection() {
                           onChange={(e) =>
                             setFormData({ ...formData, message: e.target.value })
                           }
-                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"
+                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
                         />
                       </div>
                       <AnimatePresence>
@@ -285,10 +283,10 @@ export function ContactSection() {
                         <Button 
                           type="submit" 
                           disabled={isSubmitting} 
-                          className="w-full relative overflow-hidden group"
+                          className="w-full group shadow-sm shadow-primary/20"
                           size="lg"
                         >
-                          <span className="relative z-10 flex items-center justify-center">
+                          <span className="flex items-center justify-center">
                             {isSubmitting ? (
                               <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -301,7 +299,6 @@ export function ContactSection() {
                               </>
                             )}
                           </span>
-                          <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         </Button>
                       </motion.div>
                     </motion.form>

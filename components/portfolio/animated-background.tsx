@@ -46,8 +46,7 @@ export function AnimatedBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      const isDark = document.documentElement.classList.contains('dark')
-      const particleColor = isDark ? '255, 255, 255' : '0, 0, 0'
+      const particleColor = '37, 99, 235'
 
       particles.forEach((particle, i) => {
         particle.x += particle.vx
@@ -93,7 +92,7 @@ export function AnimatedBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-40"
+      className="fixed inset-0 pointer-events-none z-0 opacity-20"
       aria-hidden="true"
     />
   )
