@@ -45,8 +45,8 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         isScrolled
-          ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-sm shadow-black/20'
-          : 'bg-background/70 backdrop-blur-md border-b border-transparent'
+          ? 'bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm'
+          : 'bg-transparent'
       )}
     >
       <nav className="container mx-auto px-6 py-4">
@@ -74,7 +74,7 @@ export function Navbar() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="relative text-sm text-muted-foreground hover:text-primary transition-colors duration-300 group"
+                className="relative text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -89,10 +89,11 @@ export function Navbar() {
               <Button 
                 asChild 
                 size="sm"
-                className="shadow-sm shadow-primary/20"
+                className="relative overflow-hidden group"
               >
                 <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>
                   <span className="relative z-10">Get in Touch</span>
+                  <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </a>
               </Button>
             </motion.div>
@@ -134,7 +135,7 @@ export function Navbar() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-300"
                     onClick={(e) => handleSmoothScroll(e, link.href)}
                   >
                     {link.label}

@@ -56,7 +56,7 @@ const itemVariants = {
 
 export function HeroSection() {
   return (
-    <section id="about" className="relative min-h-screen flex items-center pt-24 overflow-hidden">
+    <section id="about" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <AnimatedBackground />
       
       <div className="container mx-auto px-6 relative z-10">
@@ -77,7 +77,9 @@ export function HeroSection() {
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 text-balance leading-tight"
           >
-            <span>Fitsum Kasaye</span>
+            <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text">
+              Fitsum Kasaye
+            </span>
           </motion.h1>
           
           <motion.p
@@ -97,10 +99,10 @@ export function HeroSection() {
               <Button 
                 size="lg" 
                 asChild
-                className="group shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow duration-300"
+                className="group relative overflow-hidden shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow duration-300"
               >
                 <a href="#projects">
-                  <span className="flex items-center">
+                  <span className="relative z-10 flex items-center">
                     View Projects
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
@@ -112,7 +114,7 @@ export function HeroSection() {
                 variant="outline" 
                 size="lg" 
                 asChild
-                className="border-border bg-card hover:bg-secondary transition-colors duration-300"
+                className="border-2 hover:bg-primary/5 transition-colors duration-300"
               >
                 <a href="#contact">Contact Me</a>
               </Button>
@@ -129,7 +131,7 @@ export function HeroSection() {
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="p-3 rounded-full bg-card border border-border text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300"
+                className="p-3 rounded-full bg-secondary/50 text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-300"
                 aria-label={link.label}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
@@ -154,9 +156,9 @@ export function HeroSection() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-border flex justify-center pt-2"
+          className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2"
         >
-          <motion.div className="w-1 h-2 rounded-full bg-muted-foreground" />
+          <motion.div className="w-1 h-2 rounded-full bg-muted-foreground/50" />
         </motion.div>
       </motion.div>
     </section>
